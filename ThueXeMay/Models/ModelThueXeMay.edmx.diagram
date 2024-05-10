@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4c703c4bebf44539adfbd29b08a26d80" Name="Diagram1">
+        <EntityTypeShape EntityType="RENT_MOTORModel.bike" Width="1.5" PointX="3.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.bill" Width="1.5" PointX="3.125" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.blog" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.comment" Width="1.5" PointX="8" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.contact" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.employee" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.mail" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.menu" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rate" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rent" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rentDetail" Width="1.5" PointX="6" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.sysdiagram" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.type" Width="1.5" PointX="1.5" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_bike_type" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_rentDetails_bike" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_bill_rent" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_comment_blog" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_rentDetails_rent" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,94 @@
+﻿@model ThueXeMay.Models.type
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+<h2>Thêm mới hãng xe</h2>
+
+@using (Html.BeginForm("Create","types",FormMethod.Post,new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Hãng xe</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class = "control-label col-md-2">Tên hãng</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.type1, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.type1, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Giá theo giờ</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price_hour, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.price_hour, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Giá theo ngày</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price_day, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @required = "required", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.price_day, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Giá theo tháng</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.price_month, new { htmlAttributes = new { @class = "form-control", @data_val = "true", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.price_month, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ảnh</label>
+            <div class="col-md-10">
+                <input type="file" name="Image" id="Image" required>
+                <br />
+                <img id="preview" src="" width="150" height="100" class="hidden" />
+                <br />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Thêm mới</span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('#price_hour').on('input', function () {
+            var priceHour = parseFloat($(this).val());
+            var multiplierDay = 10;
+            var multiplierMonth = 20;
+
+            if (!isNaN(priceHour)) {
+                var priceDay = priceHour * multiplierDay;
+                var priceMonth = priceDay * multiplierMonth;
+                $('#price_day').val(priceDay);
+                $('#price_month').val(priceMonth);
+            }
+        });
+    });
+    </script>
+    }
