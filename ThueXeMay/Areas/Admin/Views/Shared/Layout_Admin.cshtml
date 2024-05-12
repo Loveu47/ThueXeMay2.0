@@ -116,12 +116,25 @@
                     <span>Liên lạc</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("EditAbout","Home")">
+                    <i class="fas fa-fw fa-info"></i>
+                    <span>Lời giới thiệu</span>
+                </a>
+            </li>
+
             @if (admin.fulControl == true)
             {
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Index", "Employees")">
                         <i class="fas fa-users"></i>
                         <span>Nhân viên</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Bank","Home")">
+                        <i class="fas fa-fw fa-credit-card"></i>
+                        <span>Thông tin thanh toán</span>
                     </a>
                 </li>
             }

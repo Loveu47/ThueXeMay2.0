@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Error";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+@model List<ThueXeMay.Areas.Admin.Data.Dataa>
+<h2>Danh sách mã bin</h2>
+
+<table>
+    <tr>
+        <th>Full Name</th>
+        <th>Short Name</th>
+        <th>BIN</th>
+    </tr>
+    @foreach (var bank in Model)
+    {
+        <tr>
+            <td>@bank.Name</td>
+            <td>@bank.ShortName</td>
+            <td>@bank.BIN</td>
+        </tr>
+    }
+</table>

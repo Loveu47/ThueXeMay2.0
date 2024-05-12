@@ -1,0 +1,88 @@
+﻿@model ThueXeMay.Models.contact
+
+@{
+    ViewBag.Title = "EditContact";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+@{
+    var admin = Session["UserAdmin"] as ThueXeMay.Models.employee;
+}
+@if (admin.fulControl == true)
+{
+
+    using (Html.BeginForm("EditBank", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <button type="submit" class="btn btn-warning btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+                <span class="text">Xác nhận</span>
+            </button>
+            <br />
+            <br />
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Mã BIN ngân hàng (Vui lòng điền chính xác, kiểm tra tại <a href="GetBank" target="_blank" style="color:red">ĐÂY)</a>:
+                            </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.bank_bin, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-credit-card fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Số tài khoản:
+                            </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.bank_number, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-credit-card fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Họ và tên:
+                            </div>
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.bank_name, new { htmlAttributes = new { @class = "form-control", @required = true } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+else
+{
+    <h2 style="text-align:center;color:red">Bạn không đủ quyền truy cập phần này!!!</h2>
+
+}

@@ -11,19 +11,13 @@ namespace ThueXeMay.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class employee
     {
-        
         public int id_employee { get; set; }
-        [DisplayName("Tài khoản")]
         public string account { get; set; }
-        [DisplayName("Mật khẩu")]
         public string pass { get; set; }
-        [DisplayName("Tên")]
         public string name { get; set; }
-        [DisplayName("Toàn quyền")]
         public Nullable<bool> fulControl { get; set; }
     }
 }

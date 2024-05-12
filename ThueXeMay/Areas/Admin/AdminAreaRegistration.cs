@@ -25,6 +25,11 @@ namespace ThueXeMay.Areas.Admin
                 new { controller = "Auth", action = "Logout", id = UrlParameter.Optional }
             );
             context.MapRoute(
+                "GetBank",
+                "Admin/GetBank",
+                new { controller = "Home", action = "GetBank", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },

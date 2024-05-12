@@ -1,0 +1,45 @@
+﻿@model ThueXeMay.Models.contact
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+@using (Html.BeginForm("EditAbout", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Chỉnh sửa lời giới thiệu</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+ 
+        <div class="form-group">
+            @Html.LabelFor(model => model.about, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.about, htmlAttributes: new { @class = "form-control", @placeholder = ViewBag.about, @rows = "10", @required = true })
+                @Html.ValidationMessageFor(model => model.about, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Thay đổi</span>
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Trở về", "Index", "Home")
+</div>
+
+@section scripts {
+    <script>
+        CKEDITOR.replace('contentt');
+    </script>
+}

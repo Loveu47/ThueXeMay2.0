@@ -119,6 +119,10 @@ namespace ThueXeMay.Areas.Admin.Controllers
         ViewBag.pricemonth = tigia.price_month;
         var idx = db.bills.Where(i => i.id_rent == id).Select(j => j.id_bill).First();
         bill bill = db.bills.Find(idx);
+        contact bank = db.contacts.FirstOrDefault();
+        ViewBag.bin = bank.bank_bin.Replace(" ","");
+        ViewBag.number = bank.bank_number.Replace(" ","");
+        ViewBag.name = bank.bank_name;
         return PartialView("Bill", bill);
     }
     protected override void Dispose(bool disposing)

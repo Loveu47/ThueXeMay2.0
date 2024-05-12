@@ -11,21 +11,13 @@ namespace ThueXeMay.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
+    
     public partial class menu
     {
         public int id { get; set; }
-        [DisplayName("Tiêu đề")]
         public string title { get; set; }
-        [DisplayName("Đường dẫn")]
-
         public string link { get; set; }
-        [DisplayName("Hiển thị")]
-
         public Nullable<bool> IsActive { get; set; }
-        [DisplayName("Thứ tự")]
-
         public Nullable<int> order { get; set; }
     }
 }

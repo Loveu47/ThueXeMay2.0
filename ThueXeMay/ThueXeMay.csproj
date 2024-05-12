@@ -142,6 +142,7 @@
     <Compile Include="Areas\Admin\Controllers\menusController.cs" />
     <Compile Include="Areas\Admin\Controllers\rentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\typesController.cs" />
+    <Compile Include="Areas\Admin\Data\BankData.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CarsController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -2016,16 +2017,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\ModelThueXeMay.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
-      <LastGenOutput>ModelThueXeMay.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModelThueXeMay.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
-      <LastGenOutput>ModelThueXeMay.cs</LastGenOutput>
-    </Content>
     <Content Include="Content\css\.DS_Store" />
     <Content Include="Content\css\bootstrap\.DS_Store" />
     <Content Include="Content\css\css\.DS_Store" />
@@ -2347,14 +2338,17 @@
     <Content Include="Areas\Admin\Views\rents\Details.cshtml" />
     <Content Include="Areas\Admin\Views\rents\Index.cshtml" />
     <Content Include="Areas\Admin\Views\rents\rentsDetail.cshtml" />
-    <EntityDeploy Include="Models\ModelThueXeMay.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelThueXeMay.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\ModelThueXeMay.edmx.diagram">
-      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\rents\Bill.cshtml" />
+    <Content Include="Models\ModelThueXeMay.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
+      <LastGenOutput>ModelThueXeMay.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelThueXeMay.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
+      <LastGenOutput>ModelThueXeMay.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2362,6 +2356,17 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\types\Tigia.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\GetBank.cshtml" />
+    <EntityDeploy Include="Models\ModelThueXeMay.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelThueXeMay.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ModelThueXeMay.edmx.diagram">
+      <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Admin\Views\Home\EditAbout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Bank.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\EditBank.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -2408,7 +2413,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

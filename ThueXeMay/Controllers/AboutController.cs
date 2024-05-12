@@ -11,7 +11,9 @@ namespace ThueXeMay.Controllers
     {
         // GET: About
         public ActionResult Index()
-        {
+        {   
+            var data = myObj.contacts.FirstOrDefault();
+            ViewBag.about = data.about;
             return View();
         }
         RENT_MOTOREntities myObj = new RENT_MOTOREntities();

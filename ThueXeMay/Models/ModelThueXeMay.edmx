@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="RENT_MOTORModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="RENT_MOTOREntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="bike">
           <Key>
             <PropertyRef Name="id_bike" />
@@ -65,6 +65,10 @@
           <Property Name="phone" Type="nvarchar" MaxLength="15" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="facebook_link" Type="nvarchar" MaxLength="100" />
+          <Property Name="bank_bin" Type="nchar" MaxLength="20" />
+          <Property Name="bank_name" Type="nchar" MaxLength="20" />
+          <Property Name="bank_number" Type="nchar" MaxLength="30" />
+          <Property Name="about" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -210,7 +214,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RENT_MOTORModelStoreContainer">
+        <EntityContainer Name="RENT_MOTOREntitiesStoreContainer">
           <EntitySet Name="bike" EntityType="Self.bike" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="bill" EntityType="Self.bill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="blog" EntityType="Self.blog" Schema="dbo" store:Type="Tables" />
@@ -245,10 +249,11 @@
             <End Role="rentDetails" EntitySet="rentDetails" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="RENT_MOTORModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="RENT_MOTOREntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="bike">
           <Key>
             <PropertyRef Name="id_bike" />
@@ -314,6 +319,10 @@
           <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="facebook_link" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="bank_bin" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="bank_name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="bank_number" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="about" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="employee">
           <Key>
@@ -464,7 +473,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RENT_MOTOREntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="RENT_MOTOREntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="bikes" EntityType="Self.bike" />
           <EntitySet Name="bills" EntityType="Self.bill" />
           <EntitySet Name="blogs" EntityType="Self.blog" />
@@ -504,9 +513,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RENT_MOTORModelStoreContainer" CdmEntityContainer="RENT_MOTOREntities">
+        <EntityContainerMapping StorageEntityContainer="RENT_MOTOREntitiesStoreContainer" CdmEntityContainer="RENT_MOTOREntities1">
           <EntitySetMapping Name="bikes">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.bike">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.bike">
               <MappingFragment StoreEntitySet="bike">
                 <ScalarProperty Name="id_bike" ColumnName="id_bike" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -525,7 +534,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="bills">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.bill">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.bill">
               <MappingFragment StoreEntitySet="bill">
                 <ScalarProperty Name="id_bill" ColumnName="id_bill" />
                 <ScalarProperty Name="id_rent" ColumnName="id_rent" />
@@ -537,7 +546,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="blogs">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.blog">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.blog">
               <MappingFragment StoreEntitySet="blog">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -550,7 +559,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="comments">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.comment">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.comment">
               <MappingFragment StoreEntitySet="comment">
                 <ScalarProperty Name="id_cmt" ColumnName="id_cmt" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -561,18 +570,22 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="contacts">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.contact">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.contact">
               <MappingFragment StoreEntitySet="contact">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="address" ColumnName="address" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="facebook_link" ColumnName="facebook_link" />
+                <ScalarProperty Name="bank_bin" ColumnName="bank_bin" />
+                <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+                <ScalarProperty Name="bank_number" ColumnName="bank_number" />
+                <ScalarProperty Name="about" ColumnName="about" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.employee">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.employee">
               <MappingFragment StoreEntitySet="employee">
                 <ScalarProperty Name="id_employee" ColumnName="id_employee" />
                 <ScalarProperty Name="account" ColumnName="account" />
@@ -583,7 +596,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mails">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.mail">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.mail">
               <MappingFragment StoreEntitySet="mail">
                 <ScalarProperty Name="ContactId" ColumnName="ContactId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -596,7 +609,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="menus">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.menu">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.menu">
               <MappingFragment StoreEntitySet="menu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
@@ -607,7 +620,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rates">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.rate">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.rate">
               <MappingFragment StoreEntitySet="rate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -619,7 +632,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rents">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.rent">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.rent">
               <MappingFragment StoreEntitySet="rent">
                 <ScalarProperty Name="id_rent" ColumnName="id_rent" />
                 <ScalarProperty Name="note" ColumnName="note" />
@@ -631,7 +644,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rentDetails">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.rentDetail">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.rentDetail">
               <MappingFragment StoreEntitySet="rentDetails">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_rent" ColumnName="id_rent" />
@@ -641,7 +654,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.sysdiagram">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -652,7 +665,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="types">
-            <EntityTypeMapping TypeName="RENT_MOTORModel.type">
+            <EntityTypeMapping TypeName="RENT_MOTOREntities.type">
               <MappingFragment StoreEntitySet="type">
                 <ScalarProperty Name="id_type" ColumnName="id_type" />
                 <ScalarProperty Name="type1" ColumnName="type" />

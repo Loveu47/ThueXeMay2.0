@@ -42,8 +42,8 @@
         </div>
         <hr class="my-4"><br /><br />
         @*Tạo qr code*@
-        <img style="width:inherit" src='https://img.vietqr.io/image/970422-1325040700-print.png?amount=@{@tong}&addInfo=Thanh toan ma hoa don "+@Model.id_bill +"&accountName=Tran Duc Tai'>
-</div>
+        <img style="width:inherit" src='https://img.vietqr.io/image/@{@ViewBag.bin}-@{@ViewBag.number}-print.png?amount=@{@tong}&addInfo=Thanh toan ma hoa don "+@Model.id_bill +"&accountName=@{@ViewBag.name}'>
+    </div>
 }
 else
 {
