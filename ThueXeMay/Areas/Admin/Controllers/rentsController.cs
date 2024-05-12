@@ -17,8 +17,8 @@ namespace ThueXeMay.Areas.Admin.Controllers
         // GET: Admin/rents
         public ActionResult Index()
         {
-            var item = db.rents.Include(i => i.bills);
-            return View(item.OrderByDescending(j => j.id_rent).ToList());
+            var item = db.rents.Include(i => i.bills).OrderByDescending(j => j.id_rent).ToList();
+            return View(item);
         }
         // GET: Admin/rents/Details/5
         public ActionResult Details(int? id)
@@ -80,6 +80,7 @@ namespace ThueXeMay.Areas.Admin.Controllers
                     id_rent = (int)id,
                     date_start = DateTime.Now,
                     money_hour = (int)TempData["tong"],
+                    status = "Đang thuê"
                 };
                 db.bills.Add(bill);
                 db.SaveChanges();

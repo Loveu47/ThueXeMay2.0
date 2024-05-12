@@ -7,6 +7,7 @@ using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
@@ -114,6 +115,31 @@ namespace ThueXeMay.Areas.Admin.Controllers
                 return RedirectToAction("ContactAdmin");
             }
             return View(contact);
-        } 
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult RepMail(FormCollection data)
+        {
+            var email = data["mail"];
+            var body = data["content"];
+            try
+            {
+                var message = new MailMessage()
+                {
+                    IsBodyHtml = true
+                };
+                message.To.Add(email);
+                message.Subject = "Phản hồi thư";
+                message.Body = body;
+                var smtp = new SmtpClient();
+                smtp.Send(message);
+                ThongBao("Đã gửi phản hồi thành công!!", "success");
+                return Redirect(Request.UrlReferrer.ToString());
+            } catch (Exception ex)
+            {
+                return View("Error");
+            }
+        }
     }
 }

@@ -16,19 +16,49 @@
             <strong>SĐT: </strong>@Model.Phone <hr />
             <strong>Email: </strong>@Model.Email <hr />
             @Model.Message<br /><small>Ngày gửi: @Model.CreatedDate</small><hr />
-            <a href="mailto:@Model.Email" class="btn btn-info btn-icon-split">
+            <a class="btn btn-info btn-icon-split reply-btn">
                 <span class="icon text-white-50">
                     <i class="fas fa-info-circle"></i>
                 </span>
                 <span class="text">Trả lời</span>
             </a>
-            <a href="@Url.Action("AllMail","Home")" class="btn btn-light btn-icon-split">
+            <a href="@Url.Action("AllMail","Home")" class="btn btn-light btn-icon-split ">
                 <span class="icon text-gray-600">
                     <i class="fas fa-arrow-right"></i>
                 </span>
                 <span class="text">Toàn bộ thư</span>
             </a>
         </div>
+        <div class="reply-form" style="display: none; margin: 1.2rem">
+            @using (Html.BeginForm("RepMail", "Home", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <input name="mail" hidden value="@Model.Email" />
+                <textarea class="form-control mr" name="content" id="repmail" rows="3" placeholder="Nhập nội dung trả lời"></textarea>
+                <div style="margin-top: 10px">
+                    <button type="submit" class="btn btn-primary send-reply-btn">Gửi</button>
+                    <button  class="btn btn-secondary cancel-reply-btn">Hủy</button>
+                </div>
+            }
+        </div>
     </div>
 </div>
 
+@section scripts{
+    <script>
+        document.querySelector('.reply-btn').addEventListener('click', function () {
+            // Ẩn nút "Trả lời"
+            this.style.display = 'none';
+            // Hiện form trả lời
+            document.querySelector('.reply-form').style.display = 'block';
+        });
+        
+        document.querySelector('.cancel-reply-btn').addEventListener('click', function () {
+            // Hiển thị lại nút "Trả lời" và ẩn form
+            event.preventDefault();
+            document.querySelector('.reply-btn').style.display = 'inline-block';
+            document.querySelector('.reply-form').style.display = 'none';
+        });
+        CKEDITOR.replace('repmail');
+    </script>
+}

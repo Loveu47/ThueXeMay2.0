@@ -86,7 +86,7 @@
                                     }
                                     else
                                     {
-                                        if (item.bills.Where(j => j.id_rent == item.id_rent).Select(j => j.date_end).Single() == null)
+                                        if (item.bills.Select(i => i.status).First() == "Đang thuê")
                                         {
                                             <span class="badge badge-secondary">Đang thuê</span>
                                         }

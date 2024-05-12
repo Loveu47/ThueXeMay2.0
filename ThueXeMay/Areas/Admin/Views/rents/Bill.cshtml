@@ -1,6 +1,6 @@
 ﻿@model ThueXeMay.Models.bill
 
-@if (Model.status != null)
+@if (Model.status == "Hoàn thành")
 {
     var item = (TimeSpan)(Model.date_end - Model.date_start);
     int day = item.Days;
