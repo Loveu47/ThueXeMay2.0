@@ -118,7 +118,7 @@ namespace ThueXeMay.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                myObj.Entry(contact).State = EntityState.Modified;
+                myObj.Entry(contact).State = System.Data.Entity.EntityState.Modified;
                 myObj.SaveChanges();
                 return RedirectToAction("ContactAdmin");
             }
@@ -150,7 +150,6 @@ namespace ThueXeMay.Areas.Admin.Controllers
                 return View("Error");
             }
         }
-        private readonly HttpClient _httpClient;
         public async Task<ActionResult> GetBank()
         {
             try
@@ -237,6 +236,63 @@ namespace ThueXeMay.Areas.Admin.Controllers
             myObj.SaveChanges();
             ThongBao("Thành công!!!", "success");
             return RedirectToAction("Bank");
+        }
+        public ActionResult ThongKe()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ThongKe(int? month, int? year)
+        {   
+            if(month == null && year == null)
+            {
+                ViewBag.tb = "";
+                return View();
+            }
+            if (month != null) {
+                var item = from i in myObj.bills
+                           where i.date_end != null && i.date_end.Value.Month == month & i.date_end.Value.Year == year
+                           group i.total by i.date_end.Value.Day into h
+                           select new ch()
+                           {
+                               country = h.Key,
+                               value = (int)h.Sum(),
+                           };
+                ViewBag.tb = "Doanh thu theo ngày của tháng: " +month +"/"+ year;
+                return View(item);
+            } else
+            {
+                var item = from i in myObj.bills
+                           where i.date_end.Value.Year == year
+                           group i.total by i.date_end.Value.Month into h
+                           select new ch()
+                           {
+                               country = h.Key,
+                               value = (int)h.Sum(),
+                           };
+                ViewBag.tb = "Doanh thu theo tháng của năm: " + year;
+                return View(item);
+            }
+            
+            //if (option == "thang")
+            //{
+            //    var total = myObj.bills.Where(i=>i.date_end.Value.Month == value).Select(j=>j.total).Sum();
+            //    ViewBag.total = total;
+            //    return View();
+            //}
+            //if (option == "ngay")
+            //{
+            //    var total = myObj.bills.Where(i => i.date_end.Value.Day == value).Select(j => j.total).Sum();
+            //    ViewBag.total = total;
+            //    return View();
+            //}
+            //if (option == "nam")
+            //{
+            //    var total = myObj.bills.Where(i => i.date_end.Value.Year == value).Select(j => j.total).Sum();
+            //    ViewBag.total = total;
+            //    return View();
+            //}
+           
         }
     }
 }

@@ -12,16 +12,14 @@ namespace ThueXeMay.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class bill
+    public partial class number_plate
     {
-        public int id_bill { get; set; }
-        public int id_rent { get; set; }
-        public int money_hour { get; set; }
-        public Nullable<System.DateTime> date_start { get; set; }
-        public Nullable<System.DateTime> date_end { get; set; }
-        public string status { get; set; }
-        public Nullable<int> total { get; set; }
+        public int id { get; set; }
+        public int id_bike { get; set; }
+        public string number { get; set; }
+        public Nullable<bool> available { get; set; }
+        public Nullable<int> id_rent { get; set; }
     
-        public virtual rent rent { get; set; }
+        public virtual bike bikes { get; set; }
     }
 }

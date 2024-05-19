@@ -51,7 +51,7 @@ namespace ThueXeMay.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "id_bike,name,price,IsActive,id_type,IsHot,describe,mass,volumn,size,consume,status")] bike bike, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "id_bike,name,price,quantity,IsActive,id_type,IsHot,describe,mass,volumn,size,consume,status")] bike bike, HttpPostedFileBase image)
         {
             if (image != null && image.ContentLength > 0)
             {
@@ -70,6 +70,7 @@ namespace ThueXeMay.Areas.Admin.Controllers
             }
             if (ModelState.IsValid)
             {
+                bike.total = bike.quantity;
                 db.bikes.Add(bike);
                 db.SaveChanges();
                 ThongBao("Thêm thành công!!!", "success");
@@ -102,8 +103,9 @@ namespace ThueXeMay.Areas.Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Edit([Bind(Include = "id_bike,name,price,IsActive,id_type,IsHot,describe,mass,volumn,size,consume,status")] bike bike, HttpPostedFileBase image)
+        public ActionResult Edit([Bind(Include = "id_bike,name,price,quantity,IsActive,id_type,IsHot,describe,mass,volumn,size,consume,status")] bike bike, HttpPostedFileBase image)
         {
+            bike bikes = db.bikes.Find(bike.id_bike);
             if (image != null && image.ContentLength > 0)
             {
                 string _fn = Path.GetFileName(image.FileName);
@@ -120,11 +122,11 @@ namespace ThueXeMay.Areas.Admin.Controllers
                 bike.image = "/Content/images/xe/" + _fn;
             } else if (image == null)
             {
-                bike bikes = db.bikes.Where(i=>i.id_bike == bike.id_bike).FirstOrDefault();
                 bike.image=bikes.image;
             }
             if (ModelState.IsValid)
             {
+                bike.total = bikes.total + (bike.quantity - bikes.quantity);
                 db.Set<bike>().AddOrUpdate(bike); 
                 db.SaveChanges();
                 ThongBao("Sửa thành công!!!", "success");

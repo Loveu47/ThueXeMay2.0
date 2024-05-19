@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{  
     var admin = Session["UserAdmin"] as ThueXeMay.Models.employee;
 }
 <!DOCTYPE html>
@@ -74,6 +74,8 @@
                         <a class="collapse-item" href="@Url.Action("Index","bikes")">Xe</a>
                         <a class="collapse-item" href="@Url.Action("Index","menus")">Menu</a>
                         <a class="collapse-item" href="@Url.Action("Tigia","types")">Tỉ giá</a>
+                        <a class="collapse-item" href="@Url.Action("Index","number_plate")">Biển số xe</a>
+
                     </div>
                 </div>
             </li>
@@ -123,7 +125,7 @@
                 </a>
             </li>
 
-            @if (admin.fulControl == true)
+            @if (admin.fulControl != null && admin.fulControl == true)
             {
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Index", "Employees")">
@@ -135,6 +137,12 @@
                     <a class="nav-link" href="@Url.Action("Bank","Home")">
                         <i class="fas fa-fw fa-credit-card"></i>
                         <span>Thông tin thanh toán</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("ThongKe","Home")">
+                        <i class="fas fa-fw fa-chart-line"></i>
+                        <span>Thống kê</span>
                     </a>
                 </li>
             }

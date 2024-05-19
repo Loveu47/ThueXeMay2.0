@@ -33,6 +33,7 @@ namespace ThueXeMay.Models
         public virtual DbSet<employee> employees { get; set; }
         public virtual DbSet<mail> mails { get; set; }
         public virtual DbSet<menu> menus { get; set; }
+        public virtual DbSet<number_plate> number_plate { get; set; }
         public virtual DbSet<rate> rates { get; set; }
         public virtual DbSet<rent> rents { get; set; }
         public virtual DbSet<rentDetail> rentDetails { get; set; }

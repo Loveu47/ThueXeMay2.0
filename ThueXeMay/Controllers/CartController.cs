@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using ThueXeMay.Models;
 using System.Web.Helpers;
+using System.Runtime.Serialization;
+using System.Web.WebPages;
 
 namespace ThueXeMay.Controllers
 {
@@ -51,20 +53,27 @@ namespace ThueXeMay.Controllers
             {
                 // Nếu sản phẩm khách chọn đã có trong giỏ hàng thì không thêm vào giỏ nữa mà tăng số lượng lên.
                 CartItem cardItem = giohang.FirstOrDefault(m => m.id_xe == id);
-                cardItem.SoLuong++;
+                var check = myObj.bikes.Find(id);
+                if (check.quantity > cardItem.SoLuong)
+                {
+                    cardItem.SoLuong++;
+                }
             }
             return Redirect(url: Request.UrlReferrer.ToString());
-            // Action này sẽ chuyển hướng về trang chi tiết sp khi khách hàng đặt vào giỏ thành công. Bạn có thể chuyển về chính trang khách hàng vừa đứng bằng lệnh return Redirect(Request.UrlReferrer.ToString()); nếu muốn.
-            //return RedirectToAction("Details", "Cars", new { idx = id });
         }
-        public RedirectToRouteResult SuaSoLuong(int SanPhamID, int soluongmoi)
+        public ActionResult SuaSoLuong(int SanPhamID, int soluongmoi)
         {
-            // tìm carditem muon sua
             List<CartItem> giohang = Session["giohang"] as List<CartItem>;
             CartItem itemSua = giohang.FirstOrDefault(m => m.id_xe == SanPhamID);
             if (itemSua != null)
             {
                 itemSua.SoLuong = soluongmoi;
+            }
+            var check = myObj.bikes.Find(SanPhamID);
+            if (check.quantity < soluongmoi)
+            {   
+                itemSua.SoLuong = (int)check.quantity;
+                return View("QuaSoLuong");
             }
             return RedirectToAction("Index");
 
@@ -87,8 +96,6 @@ namespace ThueXeMay.Controllers
         [HttpPost]
         public ActionResult Checkout(FormCollection frm)
         {
-            //try
-            //{
             List<CartItem> carts = (List<CartItem>)Session["giohang"];
             rent rent = new rent()
             {
@@ -97,6 +104,8 @@ namespace ThueXeMay.Controllers
                 mail = frm["inputEmail"],
                 note = frm["inputNote"],
                 date = DateTime.Now,
+                date_start = frm["datestart"].AsDateTime(),
+                date_end = frm["dateend"].AsDateTime()
             };
             myObj.rents.Add(rent);
             myObj.SaveChanges();
@@ -112,6 +121,8 @@ namespace ThueXeMay.Controllers
                     id_bike = item.id_xe,
                     amount = item.SoLuong,
                 };
+                var update = myObj.bikes.Find(item.id_xe);
+                update.quantity = update.quantity - item.SoLuong;
                 myObj.rentDetails.Add(rentDetail);
                 myObj.SaveChanges();
             }

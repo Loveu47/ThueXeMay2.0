@@ -6,8 +6,6 @@
     int day = item.Days;
     int month = day / 30;
     int hour = item.Hours;
-    int tong = hour * Model.money_hour + (day - month * 30) * ViewBag.priceday * Model.money_hour
-        + month * ViewBag.priceday * ViewBag.pricemonth * Model.money_hour;
 
     <div class="col-xxl-6 col-xl-8">
         <br /><br />
@@ -38,11 +36,11 @@
         </div>
         <div class="row ">
             <div class="col text-black-75"><i>Tổng tiền:</i></div>
-            <div class="col text-red" style="font-size:20px">@tong.ToString("#,##0").Replace(',', '.')<small>VNĐ</small></div>
+            <div class="col text-red" style="font-size:20px">@Model.total<small>VNĐ</small></div>
         </div>
         <hr class="my-4"><br /><br />
         @*Tạo qr code*@
-        <img style="width:inherit" src='https://img.vietqr.io/image/@{@ViewBag.bin}-@{@ViewBag.number}-print.png?amount=@{@tong}&addInfo=Thanh toan ma hoa don "+@Model.id_bill +"&accountName=@{@ViewBag.name}'>
+        <img style="width:inherit" src='https://img.vietqr.io/image/@{@ViewBag.bin}-@{@ViewBag.number}-print.png?amount=@{@Model.total}&addInfo=Thanh toan ma hoa don "+@Model.id_bill +"&accountName=@{@ViewBag.name}'>
     </div>
 }
 else

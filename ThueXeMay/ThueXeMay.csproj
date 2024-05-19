@@ -72,6 +72,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -140,6 +141,7 @@
     <Compile Include="Areas\Admin\Controllers\employeesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\menusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\number_plateController.cs" />
     <Compile Include="Areas\Admin\Controllers\rentsController.cs" />
     <Compile Include="Areas\Admin\Controllers\typesController.cs" />
     <Compile Include="Areas\Admin\Data\BankData.cs" />
@@ -192,6 +194,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\number_plate.cs">
+      <DependentUpon>ModelThueXeMay.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\rate.cs">
       <DependentUpon>ModelThueXeMay.tt</DependentUpon>
@@ -2357,6 +2362,9 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\types\Tigia.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\GetBank.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\EditAbout.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Bank.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\EditBank.cshtml" />
     <EntityDeploy Include="Models\ModelThueXeMay.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelThueXeMay.Designer.cs</LastGenOutput>
@@ -2364,9 +2372,9 @@
     <Content Include="Models\ModelThueXeMay.edmx.diagram">
       <DependentUpon>ModelThueXeMay.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Home\EditAbout.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Bank.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\EditBank.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ThongKe.cshtml" />
+    <Content Include="Areas\Admin\Views\number_plate\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\number_plate\Index.cshtml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
@@ -2410,6 +2418,7 @@
     <Content Include="Views\Shared\DK_DV.cshtml" />
     <Content Include="Views\Shared\FAQs.cshtml" />
     <Content Include="Views\Shared\Kiemtradonthue.cshtml" />
+    <Content Include="Views\Cart\QuaSoLuong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

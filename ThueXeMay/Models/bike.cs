@@ -18,6 +18,7 @@ namespace ThueXeMay.Models
         public bike()
         {
             this.rentDetails = new HashSet<rentDetail>();
+            this.number_plate = new HashSet<number_plate>();
         }
     
         public int id_bike { get; set; }
@@ -33,9 +34,13 @@ namespace ThueXeMay.Models
         public string size { get; set; }
         public string consume { get; set; }
         public string status { get; set; }
+        public Nullable<int> quantity { get; set; }
+        public Nullable<int> total { get; set; }
     
         public virtual type types { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<rentDetail> rentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<number_plate> number_plate { get; set; }
     }
 }

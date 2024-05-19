@@ -4,25 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9910fa1f6f1440d09f3896cf928f5dac" Name="Diagram1">
-        <EntityTypeShape EntityType="RENT_MOTOREntities.bike" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.bill" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.blog" Width="1.5" PointX="5.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.comment" Width="1.5" PointX="8" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.contact" Width="1.5" PointX="2.75" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.employee" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.mail" Width="1.5" PointX="7.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.menu" Width="1.5" PointX="4.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.rate" Width="1.5" PointX="6.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.rent" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.rentDetail" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.sysdiagram" Width="1.5" PointX="8.75" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="RENT_MOTOREntities.type" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
-        <AssociationConnector Association="RENT_MOTOREntities.FK_bike_type" ManuallyRouted="false" />
-        <AssociationConnector Association="RENT_MOTOREntities.FK_rentDetails_bike" ManuallyRouted="false" />
-        <AssociationConnector Association="RENT_MOTOREntities.FK_bill_rent" ManuallyRouted="false" />
-        <AssociationConnector Association="RENT_MOTOREntities.FK_comment_blog" ManuallyRouted="false" />
-        <AssociationConnector Association="RENT_MOTOREntities.FK_rentDetails_rent" ManuallyRouted="false" />
+      <Diagram DiagramId="30c6f770df724fb2840e4f178cbe6c7f" Name="Diagram1">
+        <EntityTypeShape EntityType="RENT_MOTORModel.bike" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.bill" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.blog" Width="1.5" PointX="5.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.comment" Width="1.5" PointX="8" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.contact" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.employee" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.mail" Width="1.5" PointX="7.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.menu" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.number_plate" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rate" Width="1.5" PointX="10.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rent" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.rentDetail" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.sysdiagram" Width="1.5" PointX="10.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RENT_MOTORModel.type" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_bike_type" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_rentDetails_bike" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.numbers" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_bill_rent" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_comment_blog" ManuallyRouted="false" />
+        <AssociationConnector Association="RENT_MOTORModel.FK_rentDetails_rent" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -85,7 +85,7 @@ namespace ThueXeMay.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(menu).State = EntityState.Modified;
+                db.Entry(menu).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 ThongBao("Sửa thành công!!!", "success");
 

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ThueXeMay.Models.bike>
+﻿@model IEnumerable<ThueXeMay.Models.number_plate>
 
 @{
     ViewBag.Title = "Index";
@@ -18,14 +18,14 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Quản lý xe</h1>
+    <h1 class="h3 mb-2 text-gray-800">Quản lý biển số xe</h1>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">
-                <a href="@Url.Action("Create","bikes")" class="btn btn-success btn-circle">
+                <a href="@Url.Action("Create","number_plate")" class="btn btn-success btn-circle">
                     <i class="fas fa-plus"></i>
-                </a>               Các dòng xe hiện tại
+                </a>Các biển số hiện tại
             </h6>
 
         </div>
@@ -35,22 +35,18 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Tên xe</th>
-                            <th>Giá</th>
-                            <th>Ảnh</th>
-                            <th>Hãng</th>
-                            <th>Còn</th>
+                            <th>Biển</th>
+                            <th>Xe</th>
+                            <th>Khả dụng</th>
                             <th>Chức năng</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>STT</th>
-                            <th>Tên xe</th>
-                            <th>Giá</th>
-                            <th>Ảnh</th>
-                            <th>Hãng</th>
-                            <th>Còn</th>
+                            <th>Biển</th>
+                            <th>Xe</th>
+                            <th>Khả dụng</th>
                             <th>Chức năng</th>
                         </tr>
                     </tfoot>
@@ -61,34 +57,25 @@
                             <tr>
                                 <td>@i</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.name)
+                                    @Html.DisplayFor(modelItem => item.number)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.price)
+                                    @Html.DisplayFor(modelItem => item.bikes.name)
                                 </td>
-                                <td>
-                                    @if (item.image != null)
-                                    {
-                                        <img src="@Url.Content(item.image)" width="113px" height="75px" alt="Ảnh" />
 
+                                <td>
+                                    @if (item.available == true)
+                                    {
+                                        <div class="btn-custom btn btn-outline-success rounded-pill"><i class="fas fa-check"></i></div>
                                     }
                                     else
-                                    {<span>NULL</span>}
+                                    {
+                                        <div class="btn-custom btn btn-outline-danger rounded-pill" ><i class="far fa-times-circle"></i></div>
+
+                                    }
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.types.type1)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.quantity)
-                                </td>
-                                <td>
-                                    <a href="@Url.Action( "Edit", new { id = item.id_bike })" class="btn btn-warning btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-exclamation-triangle"></i>
-                                        </span>
-                                        <span class="text">Sửa</span>
-                                    </a>
-                                    <a href="@Url.Action("DeleteConfirmed","bikes", new { id = item.id_bike })" onclick="return confirm('Bạn có chắc chắn muốn xoá?');" class="btn btn-danger btn-icon-split">
+                                    <a href="@Url.Action("DeleteConfirmed","number_plate", new { id = item.id })" onclick="return confirm('Bạn có chắc chắn muốn xoá?');" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

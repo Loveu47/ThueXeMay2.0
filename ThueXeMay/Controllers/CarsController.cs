@@ -31,7 +31,7 @@ namespace ThueXeMay.Controllers
             {
                 names = names.Where(j => j.id_type == Type);
             }
-            return View(names.ToList());
+            return View(names.Where(i => (bool)i.IsActive).Where(j=>j.quantity > 0).ToList());
         }
         public ActionResult CarList_Home()
         {

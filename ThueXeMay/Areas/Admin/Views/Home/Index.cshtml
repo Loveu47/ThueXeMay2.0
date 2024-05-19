@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
 }
@@ -10,7 +10,7 @@
         <div class="col">
             <h2 class="text-primary">Chào mừng trở lại, bảng điều khiển của bạn đã sẵn sàng!!!</h2>
             <p class="text-gray-700">Chúc bạn có một ngày làm việc thật vui vẻ !!!</p>
-            <button class="btn btn-primary p-3" id="hidedb" onclick="$('#hideee').slideUp(1000);">
+            <button class="btn btn-primary p-3" id="hidedb">
                 Bắt đầu<i class="fas fa-hand-point-right"></i>
             </button>
         </div>
@@ -87,7 +87,7 @@
         </div>
     </div>
 </div>
-<h2 >Thống kê đơn thuê theo ngày của tháng gần nhất</h2>
+<h2>Thống kê đơn thuê theo ngày của tháng gần nhất</h2>
 <div id="chartdiv" style="width: 100%; height: 500px;"></div>
 
 @section scripts{
@@ -95,7 +95,21 @@
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
     <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-
+    <script>
+        $(document).ready(function () {
+            
+            if (sessionStorage.getItem('hideeeShown')) {
+               
+                $('#hideee').hide();
+            } else {
+                $('#hidedb').click(function () {
+                    $('#hideee').slideUp(1000, function () {
+                        sessionStorage.setItem('hideeeShown', 'true');
+                    });
+                });
+            }
+        });
+    </script>
     <!-- Chart code -->
     <script>
         am5.ready(function () {
